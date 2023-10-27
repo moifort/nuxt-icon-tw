@@ -13,7 +13,7 @@ Uses [Tailwind CSS Icons](https://github.com/egoist/tailwindcss-icons) to load l
 
 Can add custom collections from JSON files in addition to locally installed Iconify packages
 
-Falls back to API calls for collections not loaded loccally
+Falls back to API calls for collections not loaded locally
 
 ## Features ✨
 
@@ -128,7 +128,7 @@ export default defineNuxtConfig({
 <Icon name="NuxtIcon" />
 ```
 
-Note that `NuxtIcon` needs to be inside `components/global/` folder (see [example](https://github.com/nuxt-modules/icon/blob/main/playground/components/global/NuxtIcon.vue)).
+Note that `NuxtIcon` needs to be inside `components/global/` folder (see [example](https://github.com/jcamp-code/nuxt-icon-tw/blob/main/playground/components/global/NuxtIcon.vue)).
 
 ## Tailwind Icons Configuration
 
@@ -260,7 +260,7 @@ const MyIcon = h(Icon, { name: 'uil:twitter' })
 1. Clone this repository
 2. Install dependencies using `pnpm install` (install `pnpm` with `corepack enable`, [learn more](https://pnpm.io/installation#using-corepack))
 3. Run `npm run dev:prepare` to generate type stubs.
-4. Use `npm run dev` to start [playground](https://github.com/nuxt-modules/icon/tree/main/playground) in development mode.
+4. Use `npm run dev` to start [playground](https://github.com/jcamp-code/nuxt-icon-tw/tree/main/playground) in development mode.
 
 ## Credits 💌
 

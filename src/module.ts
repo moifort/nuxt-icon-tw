@@ -27,7 +27,7 @@ export interface ModuleOptions {}
 // Learn how to create a Nuxt module on https://nuxt.com/docs/guide/going-further/modules/
 export default defineNuxtModule<TailwindIconsModuleOptions>({
   meta: {
-    name: 'nuxt-icon',
+    name: 'nuxt-icon-tw',
     configKey: 'icon',
     compatibility: {
       nuxt: '^3.0.0',

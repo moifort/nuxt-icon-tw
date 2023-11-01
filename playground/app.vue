@@ -15,9 +15,13 @@
       <Icon name="mdi-abjad-arabic" size="48" />
       <Icon name="i-logos-adobe-indesign" size="48" />
     </p>
+    <p class="bg-green-200">
+      DoubleDashes:
+      <Icon name="fa6-solid-arrow-up-1-9" />
+    </p>
     <p class="bg-blue-200">
       Custom Icon JSON file:
-      <Icon name="custom-icon1" />
+      <Icon name="i-custom-icon1" />
     </p>
     <p>
       Sizes:

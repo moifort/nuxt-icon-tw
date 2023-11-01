@@ -57,13 +57,10 @@ export const iconsPlugin = (iconsPluginOptions?: IconsPluginOptions) => {
     getCustomCollections(customCollections)
   )
 
-  const components: Record<string, Record<string, string>> = {}
-  const twPrefixes: Record<
-    string,
-    (arg: string | Record<string, string>) => Record<string, string>
-  > = {}
-
+  const components: Record<string, Record<string, Record<string, string>>> = {}
   const collectionPrefixes = [] as string[]
+
+  if (prefix) components[prefix] = {}
 
   for (const colPrefix of Object.keys(collections)) {
     collectionPrefixes.push(prefix ? `${prefix}-${colPrefix}` : `${colPrefix}`)
@@ -71,44 +68,34 @@ export const iconsPlugin = (iconsPluginOptions?: IconsPluginOptions) => {
       ...collections[colPrefix],
       prefix: colPrefix,
     }
+    if (!prefix) components[colPrefix] = {}
+
     parseIconSet(collection, (name, data) => {
-      if (!data) return
+      if (!data || !name) return
       const key = prefix ? `${colPrefix}-${name}` : `${name}`
-      components[key] = generateIconComponent(data, {
+      components[prefix || colPrefix][key] = generateIconComponent(data, {
         scale,
         extraProperties,
       })
     })
-    if (!prefix) {
-      twPrefixes[colPrefix] = (value: string | Record<string, string>) => {
-        if (typeof value === 'string') return components[value]
-        return value
-      }
-    }
   }
 
   if (iconsPluginOptions)
     iconsPluginOptions.resolvedPrefixes = collectionPrefixes
 
-  const noPrefixPlugin = plugin(({ matchComponents }) => {
-    matchComponents(twPrefixes, {
-      values: components,
-    })
-  })
-
-  const prefixPlugin = plugin(({ matchComponents }) => {
-    matchComponents(
-      {
-        [prefix]: (value) => {
-          if (typeof value === 'string') return components[value]
-          return value
+  return plugin(({ matchComponents }) => {
+    for (const twPrefix of Object.keys(components)) {
+      matchComponents(
+        {
+          [twPrefix]: (value) => {
+            if (typeof value === 'string') return components[twPrefix][value]
+            return value
+          },
         },
-      },
-      {
-        values: components,
-      }
-    )
+        {
+          values: components[twPrefix],
+        }
+      )
+    }
   })
-
-  return prefix ? prefixPlugin : noPrefixPlugin
 }

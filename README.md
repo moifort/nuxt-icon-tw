@@ -116,6 +116,15 @@ export default defineNuxtConfig({
 })
 ```
 
+Note you can also get these to show up in [VS Code Iconify](https://marketplace.visualstudio.com/items?itemName=antfu.iconify)
+
+```
+{
+  // set from root of the project
+  "iconify.customCollectionJsonPaths": ["./playground/custom.json"]
+}
+```
+
 ### Emoji
 
 ```html

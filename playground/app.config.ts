@@ -1,6 +1,6 @@
 export default {
   nuxtIcon: {
-    size: '1em',
+    size: false,
     aliases: {
       github: 'carbon:logo-github',
       nuxt: 'logos:nuxt-icon',
